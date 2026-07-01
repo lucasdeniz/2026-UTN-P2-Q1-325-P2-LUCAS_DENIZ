@@ -1,12 +1,15 @@
 
 package segundoparcialprogramacion2;
 
-public class Libro {
+import java.io.Serializable;
+
+public class Libro implements Serializable, Comparable<Libro>{
     private String codigo;
     private String titulo;
     private String autor;
     private int anioPublicacion;
     private boolean disponible;
+    private int contadorPrestados;
 
     public Libro(String codigo, String titulo, String autor, int anioPublicacion) {
         this.codigo = codigo;
@@ -14,11 +17,22 @@ public class Libro {
         this.autor = autor;
         this.anioPublicacion = anioPublicacion;
         this.disponible = true;
+        this.contadorPrestados = 0;
     }
     
     public String getCodigo() {
         return codigo;
     }
+
+    public int getCantidadPrestados() {
+        return contadorPrestados;
+    }
+
+    public void sumaCantidad() {
+        contadorPrestados++;
+    }
+    
+    
 
     public boolean isDisponible() {
         return disponible;
@@ -43,6 +57,11 @@ public class Libro {
         Libro libro = (Libro) o;
         
         return this.getCodigo().equals(libro.getCodigo());
+    }
+    
+    @Override
+    public int compareTo(Libro l) {
+        return l.getCantidadPrestados() - this.contadorPrestados;
     }
 
     @Override

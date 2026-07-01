@@ -4,7 +4,9 @@
  */
 package segundoparcialprogramacion2;
 
-public class Socio extends Persona{
+import java.io.Serializable;
+
+public class Socio extends Persona implements Serializable{
     private static int contadorId = 1;
     private String idSocio;
 
